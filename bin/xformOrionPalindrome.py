@@ -24,6 +24,7 @@ def lps(str):
 def check(s):
     return s == s[::-1]
 
+<<<<<<< HEAD
 def dfs(graph, start):
     visited, stack = set(), [start]
     while stack:
@@ -33,12 +34,15 @@ def dfs(graph, start):
             stack.extend(graph[vertex] - visited)
     return visited
 
+=======
+>>>>>>> fcb4da0b4cc500b93a46443ca8404388c0d05a11
 n,k,m = input().strip().split(' ')
 n,k,m = [int(n),int(k),int(m)]
 tDict = {}
 for a0 in range(k):
     x,y = input().strip().split(' ')
     x,y = [int(x),int(y)]
+<<<<<<< HEAD
     # x1 = tDict[x] if tDict.get(x) else ()
     # y1 = tDict[y] if tDict.get(y) else ()
     if tDict.get(x):
@@ -68,6 +72,25 @@ for i in a:
         a1.extend([i])
 # print(a,a1, lps(''.join(a1)))
 print(tDict, a1)
+=======
+    # x1 = tDict[x] if tDict.get(x) else []
+    # y1 = tDict[y] if tDict.get(y) else []
+    tDict[x] = list(set(tDict[x] + [y] )) if tDict.get(x) else [y]
+    # tDict[x] = list(set(tDict[x] + [y] + y1)) if tDict.get(x) else [y] + y1
+    tDict[y] = list(set(tDict[y] + [x] )) if tDict.get(y) else [x]
+    # tDict[y] = list(set(tDict[y] + [x] + x1)) if tDict.get(y) else [x] + x1
+    # print(x, y, [x],[y], tDict.get(x), tDict, x1, y1)
+
+for k, v in tDict.items():
+    for vl in v:
+        x1 = tDict[vl] if tDict.get(vl) else []
+        tDict[k] = list(set(list(tDict [k]  + x1)))
+
+# print(tDict)
+a = list(map(int, input().strip().split(' ')))
+a1 = [str(min(tDict[i])) for i in a]
+# print(a,a1, lps(''.join(a1)))
+>>>>>>> fcb4da0b4cc500b93a46443ca8404388c0d05a11
 print(lps(''.join(a1)))
 
 
